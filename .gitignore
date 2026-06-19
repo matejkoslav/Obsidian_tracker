@@ -1,0 +1,21 @@
+# Personal weekly-review data
+logs/**
+!logs/.gitkeep
+
+reviews/**
+!reviews/.gitkeep
+
+rules/active-rules.md
+
+# Local Obsidian state
+.obsidian/workspace*.json
+.obsidian/cache/
+.obsidian/plugins/
+
+# Local Codex state
+.codex/
+.agents/
+
+# OS files
+.DS_Store
+.trash/
