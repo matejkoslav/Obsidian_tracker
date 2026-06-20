@@ -1,3 +1,4 @@
 - [x] goals
 - [x] habits
 - [ ] refine agents md (its too long)
+- [ ] refine readme (its written by ai)
