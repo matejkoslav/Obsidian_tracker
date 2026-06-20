@@ -13,8 +13,9 @@ week review
 ```
 
 Codex reads the current week, scores each day **0–10**, calculates optional
-habit progress, shows whether the week is improving or declining, and writes
-one experiment into the daily template for the next week.
+habit progress, checks optional active goals, shows whether the week is
+improving or declining, and writes one experiment into the daily template for
+the next week.
 
 ---
 
@@ -29,6 +30,8 @@ Obsidian_tracker/
 ├── .stignore
 ├── docs/
 │   └── obsidian-setup.md
+├── goals/
+│   └── goals.example.md
 ├── templates/
 │   ├── daily-template.example.md
 │   └── weekly-review-template.md
@@ -59,6 +62,12 @@ For optional habit scoring, also create private habit rules:
 cp rules/habit-rules.example.md rules/habit-rules.md
 ```
 
+For optional goal alignment, create a private goals file:
+
+```bash
+cp goals/goals.example.md goals/goals.md
+```
+
 Customize `templates/daily-template.md` locally. It is excluded from Git, so
 personal habit names do not need to be published. Customize
 `rules/habit-rules.md` with matching targets and weights; higher weights have
@@ -66,7 +75,7 @@ more influence on the overall habit percentage.
 
 Open the repository folder as an Obsidian vault.
 
-Your personal daily logs, generated weekly reviews, habit configuration,
+Your personal daily logs, generated weekly reviews, goals, habit configuration,
 private daily template, idea notes, and local Obsidian workspace state are
 excluded from Git by `.gitignore`.
 
@@ -120,6 +129,19 @@ does not alter that score.
 
 ---
 
+## Optional goal alignment
+
+Keep no more than three active goals in `goals/goals.md` and mark exactly one
+as primary. Each weekly review compares concrete logged output with the goal
+outcome, completion condition, current milestone, and deadline.
+
+Use an optional `[G1]`, `[G2]`, or `[G3]` marker in a daily output when its goal
+would otherwise be ambiguous. Goal alignment reports `On track`, `At risk`,
+`Off track`, or `No evidence`, plus one next step. It does not change output or
+habit scores.
+
+---
+
 ## Weekly workflow
 
 From the `Obsidian_tracker/` folder, open Codex CLI and type:
@@ -137,6 +159,7 @@ Expected result:
 - show a dynamic improving/stable/mixed/declining verdict
 - create a daily visual trend with score-label emojis
 - calculate optional habit progress
+- evaluate optional active goals and deadline feasibility
 - write a review to `reviews/YYYY/MM/WXX-review.md`
 - summarize what moved, leaked time, and affected energy
 - select one weekly experiment and update the private daily template

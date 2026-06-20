@@ -46,6 +46,12 @@ Optional private habit rules:
 rules/habit-rules.md
 ```
 
+Optional private goals:
+
+```txt
+goals/goals.md
+```
+
 Templates:
 
 ```txt
@@ -83,28 +89,31 @@ Steps:
 5. Read the previous weekly review if available.
 6. If `rules/habit-rules.md` exists, read it and score habits only for dates on
    or after its `Active from` date.
-7. Score each day from **0–10** using the scoring rules below.
-8. Calculate the current week's average output score.
-9. Compare output and habits with the previous review when comparable data
+7. If `goals/goals.md` exists, read it and validate the active goals using the
+   Goal Alignment rules below.
+8. Score each day from **0–10** using the scoring rules below.
+9. Calculate the current week's average output score.
+10. Compare output and habits with the previous review when comparable data
    exists, then choose the weekly direction using the rules below.
-10. Create a visual daily trend with a score-label emoji on every day.
-11. If habit rules are active for any reviewed day, create a compact habit
+11. Create a visual daily trend with a score-label emoji on every day.
+12. If valid active goals exist, create a compact `Goal Alignment` section.
+13. If habit rules are active for any reviewed day, create a compact habit
     progress table and weighted overall percentage.
-12. Write the review to:
+14. Write the review to:
 
 ```txt
 reviews/YYYY/MM/WXX-review.md
 ```
 
-13. Include compact `What Mattered` and `Next Week` sections.
-14. Select exactly one concrete `Test` experiment for the next week.
-15. Replace the weekly-experiment callout at the top of the private
+15. Include compact `What Mattered` and `Next Week` sections.
+16. Select exactly one concrete `Test` experiment for the next week.
+17. Replace the weekly-experiment callout at the top of the private
     `templates/daily-template.md` with that `Test`. Do not rewrite existing
     daily notes. If the callout is missing, add it at the top.
-16. Include at most three bullets in `Context For Future AI Reviews`.
-17. Apply any explicit dated cleanup instruction in `rules/habit-rules.md` when
+18. Include at most three bullets in `Context For Future AI Reviews`.
+19. Apply any explicit dated cleanup instruction in `rules/habit-rules.md` when
     its stated review date has been reached.
-18. After writing the file, summarize the result briefly in the terminal/chat.
+20. After writing the file, summarize the result briefly in the terminal/chat.
 
 If week/date is ambiguous, do not ask unless necessary. Choose the most recent week folder with notes.
 
@@ -189,6 +198,66 @@ block per 10 percentage points:
 ```txt
 70% = ███████░░░
 ```
+
+---
+
+## Goal Alignment
+
+Goal alignment is optional and configured only through the private
+`goals/goals.md` file. If the file does not exist, omit the section.
+
+Each goal must contain only:
+
+- `ID`
+- `Primary`
+- `Outcome`
+- `Deadline` in `YYYY-MM-DD` format
+- `Done when`
+- `Current milestone`
+- `Status`: `active`, `paused`, or `done`
+
+Evaluate only goals with `Status: active`. There may be no more than three
+active goals, and exactly one active goal must use `Primary: yes`. If the
+configuration is invalid, do not guess or evaluate it; report the setup issue
+in the terminal/chat.
+
+Match concrete output from the reviewed daily notes to each active goal:
+
+1. An explicit `[G1]`, `[G2]`, or `[G3]` marker links that output to the
+   matching goal and overrides automatic matching.
+2. Otherwise, match only when the output clearly supports the goal's `Outcome`,
+   `Done when`, or `Current milestone`.
+3. Do not use plans, intentions, fake work, or unlogged assumptions as progress.
+4. If the evidence is ambiguous or absent, use `⚪ No evidence`.
+
+Assign exactly one status per active goal:
+
+- `🟢 On track`: concrete progress supports the current milestone and the
+  deadline still appears realistic.
+- `🟠 At risk`: progress is weak, indirect, or insufficient for the remaining
+  time.
+- `🔴 Off track`: the deadline has passed without completion, or logged
+  evidence shows the current plan is no longer realistic.
+- `⚪ No evidence`: the notes do not contain enough evidence to judge.
+
+For every active goal, output exactly:
+
+```md
+### G1 · Primary · [Outcome]
+
+- **Status:** 🟢 On track
+- **Evidence:** [one evidence-based sentence]
+- **Next step:** [one concrete action]
+```
+
+Omit `Primary` from non-primary goal headings. Keep the evidence to one
+sentence and the next step to one action. Say `No evidence` instead of
+inventing progress, reasons, or confidence.
+
+Goal alignment must not change the daily output score, output average, habit
+results, or weekly direction calculation. Repeated goal misalignment may inform
+one existing `Keep / Reduce / Change / Test` item, but must not create extra
+experiments or recommendation sections.
 
 ---
 
@@ -300,6 +369,8 @@ Previous week: [previous or Baseline]
 **Verdict:** [one direct sentence]
 
 ## 📈 Daily Score Trend
+
+## 🧭 Goal Alignment
 
 ## 📊 Habit Progress
 

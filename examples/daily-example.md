@@ -13,6 +13,7 @@ Write real output, not effort.
 Good examples:
 
 - shipped feature
+- `[G1]` finished the editable weekly-plan screen
 - commit / PR
 - deployed something
 - sent outreach
@@ -23,6 +24,9 @@ Good examples:
 - completed school task that actually had deadline/value
 - recorded/sent/published something
 - made a decision that unlocks execution
+
+Use an optional goal marker such as `[G1]`, `[G2]`, or `[G3]` when the link
+between an output and a goal would otherwise be ambiguous.
 
 Bad examples:
 

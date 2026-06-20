@@ -30,6 +30,18 @@ Trend:
 
 ---
 
+## 🧭 Goal Alignment
+
+Omit this section when `goals/goals.md` does not exist.
+
+### {{goal_id}} · {{primary_if_applicable}} · {{goal_outcome}}
+
+- **Status:** {{goal_status}}
+- **Evidence:** {{one_evidence_based_sentence}}
+- **Next step:** {{one_concrete_action}}
+
+---
+
 ## 📊 Habit Progress
 
 Overall: —% ░░░░░░░░░░

@@ -10,6 +10,7 @@ reviews/**
 templates/daily-template.md
 rules/active-rules.md
 rules/habit-rules.md
+goals/goals.md
 
 
 # Local Obsidian state
@@ -18,7 +19,7 @@ rules/habit-rules.md
 .obsidian/plugins/
 attachments/
 
-TODO.md
+TODO_private.md
 
 # Local Codex state
 .codex/
