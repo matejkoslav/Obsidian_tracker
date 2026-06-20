@@ -1,12 +1,23 @@
 # Obsidian Setup
 
-## 1. Enable Daily Notes
+## 1. Create the private daily template
+
+From the vault root:
+
+```bash
+cp templates/daily-template.example.md templates/daily-template.md
+```
+
+Customize `templates/daily-template.md` with the habits or prompts you want to
+track. This personal file is excluded from Git.
+
+## 2. Enable Daily Notes
 
 ```txt
 Settings → Core plugins → Daily notes → ON
 ```
 
-## 2. Configure Daily Notes
+## 3. Configure Daily Notes
 
 ```txt
 Settings → Daily notes
@@ -22,7 +33,7 @@ Template file location:
 templates/daily-template
 ```
 
-## 3. Optional: set hotkey
+## 4. Optional: set hotkey
 
 ```txt
 Settings → Hotkeys → Daily notes: Open today's daily note
@@ -34,7 +45,7 @@ Example hotkey:
 Ctrl + Alt + D
 ```
 
-## 4. Templates plugin error
+## 5. Templates plugin error
 
 If Obsidian shows:
 

@@ -1,2 +1,4 @@
-set up syncthing (make backup of this vault then try to set it up)
-add general how to set up syncthing md file
+- [ ] pridaj goals sem všeobecné svoje, a potom ai pri week review povie či som na dobrej ceste ci sa držím a som dobre proste pracujem na tom cieli, alebo nie
+- [ ] aj deadlines na tie ciele nech vieš či som good nech vie povedať
+- [ ] čiže ďalšia vec goals vytvoriť funckiu sem že md files s goals konrétnymi aj s deadline že presne viem kedy su done a ai agent z toho vie vyhodnotiť stuff
+- [ ] s ním sa poradiť či to je good idea ako to implementovať... aby to bolo hight leverage hlavne že to fr pomôže asi ten output od neho nech robí svoje navjviac poradím sa s ním a uvidíme

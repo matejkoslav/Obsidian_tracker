@@ -1,3 +1,4 @@
 {
-  "openBehavior": "daily"
+  "openBehavior": "daily",
+  "attachmentFolderPath": "attachments"
 }

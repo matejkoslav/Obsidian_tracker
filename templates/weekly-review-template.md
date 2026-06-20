@@ -1,92 +1,66 @@
-# W{{week}} Weekly Review — {{date_range}}
+# 🧭 WEEKLY DIRECTION
+
+W{{week}} · {{date_range}}
+
+## {{status_emoji}} {{direction}}
+
+🚀 **Output**
+░░░░░░░░░░ **— / 10**
+Previous week: —
+
+📊 **Habits**
+░░░░░░░░░░ **—%**
+Previous week: —
+
+**Verdict:** —
+
+---
 
 ## 📈 Daily Score Trend
 
-| Day | Score | Bar | Signal |
-|---|---:|---|---|
-| Mon | /10 | ░░░░░░░░░░ | |
-| Tue | /10 | ░░░░░░░░░░ | |
-| Wed | /10 | ░░░░░░░░░░ | |
-| Thu | /10 | ░░░░░░░░░░ | |
-| Fri | /10 | ░░░░░░░░░░ | |
-| Sat | /10 | ░░░░░░░░░░ | |
-| Sun | /10 | ░░░░░░░░░░ | |
+Mon —/10 ░░░░░░░░░░ {{signal}}
+Tue —/10 ░░░░░░░░░░ {{signal}}
+Wed —/10 ░░░░░░░░░░ {{signal}}
+Thu —/10 ░░░░░░░░░░ {{signal}}
+Fri —/10 ░░░░░░░░░░ {{signal}}
+Sat —/10 ░░░░░░░░░░ {{signal}}
+Sun —/10 ░░░░░░░░░░ {{signal}}
 
 Trend:
 
-Direction:
+---
+
+## 📊 Habit Progress
+
+Overall: —% ░░░░░░░░░░
+
+| Habit | Result | Bar |
+|---|---:|---|
+| | —% | ░░░░░░░░░░ |
+
+Progress:
 
 ---
 
-## 🚀 Needle-moving Output
+## 🔍 What Mattered
 
-What actually moved the week forward:
-
--
-
----
-
-## 🧨 Fake Work / Time Leaks
-
-What looked productive but did not move the needle:
-
--
+- 🚀 **Moved forward:** —
+- 🧨 **Time leak:** —
+- ⚡ **Energy:** —
 
 ---
 
-## ⚡ Energy Patterns
+## 🎯 Next Week
 
-### 🟢 Energizing patterns
--
-
-### 🟠 Neutral patterns
--
-
-### 🔴 Draining patterns
--
-
----
-
-## ✅ Keep
-
--
-
-## 🔻 Reduce
-
--
-
-## 🔁 Change
-
--
-
-## 🧪 Test
-
--
-
----
-
-## 📏 Rules Evaluation
-
-Read `rules/active-rules.md` and evaluate:
-
-| Rule | Decision | Why |
-|---|---|---|
-| | keep / modify / delete | |
-
----
-
-## 🎯 3 Rules For Next Week
-
-Exactly 3.
-
-1.
-2.
-3.
+- ✅ **Keep:** —
+- 🔻 **Reduce:** —
+- 🔁 **Change:** —
+- 🧪 **Test:** —
 
 ---
 
 ## 🧠 Context For Future AI Reviews
 
-Carry forward only useful patterns.
+Maximum 3 short bullets.
 
 -

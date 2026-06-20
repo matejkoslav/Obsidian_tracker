@@ -5,17 +5,30 @@ logs/**
 reviews/**
 !reviews/.gitkeep
 
+
+# Personal habit configuration
+templates/daily-template.md
 rules/active-rules.md
+rules/habit-rules.md
+
 
 # Local Obsidian state
 .obsidian/workspace*.json
 .obsidian/cache/
 .obsidian/plugins/
+attachments/
+
+TODO.md
 
 # Local Codex state
 .codex/
 .agents/
+docs/superpowers
 
 # OS files
 .DS_Store
 .trash/
+
+# Syncthing
+.stfolder
+.stversions

@@ -1,5 +1,3 @@
-# AGENTS.md — Obsidian_tracker
-
 You are the weekly review agent for this Markdown system.
 
 Your job is to read the user's daily notes, create a direct weekly review, score each day, identify patterns, and recommend a small number of practical changes.
@@ -12,7 +10,7 @@ Tone:
 - No motivational filler
 - No long generic advice
 - Be evidence-based
-- Use Slovak/English naturally
+- Use English for generated notes and reviews
 - Use emojis for visual scanning, but do not overdo it
 
 Do not add these sections:
@@ -42,10 +40,10 @@ Weekly reviews:
 reviews/YYYY/MM/WXX-review.md
 ```
 
-Rules:
+Optional private habit rules:
 
 ```txt
-rules/active-rules.md
+rules/habit-rules.md
 ```
 
 Templates:
@@ -72,7 +70,9 @@ week review
 
 Interpret it as:
 
-> Analyze the current or most recent week of daily notes, create a weekly review, and update/recommend rules.
+> Analyze the current or most recent week of daily notes, show the direction of
+> progress, create a concise weekly review, and set one experiment for the next
+> week.
 
 Steps:
 
@@ -81,20 +81,30 @@ Steps:
 3. If the current week has no notes, use the most recent week folder with daily notes.
 4. Read all daily notes from that week.
 5. Read the previous weekly review if available.
-6. Read `rules/active-rules.md`.
+6. If `rules/habit-rules.md` exists, read it and score habits only for dates on
+   or after its `Active from` date.
 7. Score each day from **0–10** using the scoring rules below.
-8. Create a visual daily trend.
-9. Write the review to:
+8. Calculate the current week's average output score.
+9. Compare output and habits with the previous review when comparable data
+   exists, then choose the weekly direction using the rules below.
+10. Create a visual daily trend with a score-label emoji on every day.
+11. If habit rules are active for any reviewed day, create a compact habit
+    progress table and weighted overall percentage.
+12. Write the review to:
 
 ```txt
 reviews/YYYY/MM/WXX-review.md
 ```
 
-10. Include `Keep / Reduce / Change / Test`.
-11. Recommend exactly **3 rules** for next week.
-12. Evaluate existing rules as `keep / modify / delete`.
-13. Include a short `Context For Future AI Reviews` section.
-14. After writing the file, summarize the result briefly in the terminal/chat.
+13. Include compact `What Mattered` and `Next Week` sections.
+14. Select exactly one concrete `Test` experiment for the next week.
+15. Replace the weekly-experiment callout at the top of the private
+    `templates/daily-template.md` with that `Test`. Do not rewrite existing
+    daily notes. If the callout is missing, add it at the top.
+16. Include at most three bullets in `Context For Future AI Reviews`.
+17. Apply any explicit dated cleanup instruction in `rules/habit-rules.md` when
+    its stated review date has been reached.
+18. After writing the file, summarize the result briefly in the terminal/chat.
 
 If week/date is ambiguous, do not ask unless necessary. Choose the most recent week folder with notes.
 
@@ -113,7 +123,7 @@ Score based on evidence in the daily note, not mood.
 | 🧨 Fake work / time leak named honestly                                                         |     +1 |
 | 🔁 One concrete change for tomorrow                                                             |     +2 |
 | ⚡ Useful energy pattern captured with fix/insight                                              |     +1 |
-| 📏 Followed or validated an active rule                                                         |     +2 |
+| 🧪 Followed or validated the current weekly experiment                                          |     +2 |
 
 Rules:
 
@@ -139,6 +149,49 @@ Use whole numbers only.
 
 ---
 
+## Habit Progress
+
+Habit tracking is optional and configured only through
+`rules/habit-rules.md`. If that file does not exist, or no reviewed date is on
+or after its `Active from` date, omit habit scoring.
+
+Score only logged evidence:
+
+- A present checked checkbox, `[x]`, scores `100%`.
+- A present unchecked checkbox, `[ ]`, scores `0%`.
+- For a positive numeric target, score
+  `min(actual / target, 1) × 100`.
+- For a maximum target, score `100%` when `actual <= target`; otherwise score
+  `(target / actual) × 100`.
+- A missing numeric value or absent habit line is missing data. Exclude it from
+  both numerator and denominator; do not score it as zero.
+- Accept clear equivalent time formats such as `90m`, `1 h 30m`, or
+  `1h 30m`.
+- Cap every result at `100%` and round displayed percentages to whole numbers.
+
+For each habit, calculate its weekly result as the average of its recorded
+daily percentages. For the overall weekly result, every recorded daily habit
+result contributes:
+
+```txt
+result × habit weight
+```
+
+Divide the sum by the sum of the corresponding recorded weights. Do not
+reweight missing data.
+
+Habit results do not change the existing daily output score. They may inform
+`Keep / Reduce / Change / Test` when supported by repeated evidence.
+
+Use a 10-character bar for each displayed percentage. Fill approximately one
+block per 10 percentage points:
+
+```txt
+70% = ███████░░░
+```
+
+---
+
 ## Score labels
 
 ```txt
@@ -146,6 +199,59 @@ Use whole numbers only.
 6–7  = 🟢 good
 4–5  = 🟠 mixed
 0–3  = 🔴 weak
+```
+
+---
+
+## Weekly Direction
+
+The current output value is the arithmetic mean of all scored days in the
+reviewed week, shown with one decimal place on a `0–10` scale.
+
+When comparable previous values exist, calculate:
+
+```txt
+output change = current output average - previous output average
+habit change = current overall habit percentage - previous habit percentage
+```
+
+A meaningful output change is at least `0.5`. A meaningful habit change is at
+least `5` percentage points:
+
+```txt
+output up     = change >= 0.5
+output down   = change <= -0.5
+output stable = -0.5 < change < 0.5
+
+habits up     = change >= 5
+habits down   = change <= -5
+habits stable = -5 < change < 5
+```
+
+Choose one overall status:
+
+- 🟢 `↗ IMPROVING`: at least one comparable track is up and none is down.
+- 🔴 `↘ DECLINING`: at least one comparable track is down and none is up.
+- 🟠 `↕ MIXED RESULT`: one comparable track is up and another is down.
+- 🟡 `→ STABLE WEEK`: comparable tracks have no meaningful change.
+- ⚪ `FIRST WEEK — BASELINE`: no comparable previous value exists.
+
+If only output or only habits has comparable previous data, decide from that
+track alone. Show `Baseline` instead of a previous value for a newly activated
+track.
+
+If an older previous review has no output summary, calculate its average from
+the daily scores shown in that review. If a previous value cannot be recovered
+from logged evidence, treat that track as baseline.
+
+The verdict is one direct sentence explaining which track changed. Do not use
+motivational filler.
+
+Use a 10-character bar for the output average, rounded to the nearest filled
+block:
+
+```txt
+7.1 / 10 = ███████░░░
 ```
 
 ---
@@ -166,18 +272,9 @@ Sat 5/10 █████░░░░░ 🟠
 Sun 6/10 ██████░░░░ 🟢
 
 Trend: 6 → 7 → 4 → 8 → 7 → 5 → 6
-Direction: ↗ improving, but unstable
 ```
 
-Trend direction options:
-
-```txt
-↗ improving
-↘ declining
-→ stable
-↗ improving, but unstable
-↘ declining, but recoverable
-```
+Every day must include its score-label emoji.
 
 ---
 
@@ -186,33 +283,38 @@ Trend direction options:
 Create this structure:
 
 ```md
-# WXX Weekly Review — YYYY-MM-DD to YYYY-MM-DD
+# 🧭 WEEKLY DIRECTION
+
+WXX · YYYY-MM-DD to YYYY-MM-DD
+
+## [dynamic status]
+
+🚀 **Output**
+[bar] **current / 10**
+Previous week: [previous or Baseline]
+
+📊 **Habits**
+[bar] **current percentage or Not active**
+Previous week: [previous or Baseline]
+
+**Verdict:** [one direct sentence]
 
 ## 📈 Daily Score Trend
 
-## 🚀 Needle-moving Output
+## 📊 Habit Progress
 
-## 🧨 Fake Work / Time Leaks
+## 🔍 What Mattered
 
-## ⚡ Energy Patterns
+- 🚀 **Moved forward:**
+- 🧨 **Time leak:**
+- ⚡ **Energy:**
 
-### 🟢 Energizing patterns
+## 🎯 Next Week
 
-### 🟠 Neutral patterns
-
-### 🔴 Draining patterns
-
-## ✅ Keep
-
-## 🔻 Reduce
-
-## 🔁 Change
-
-## 🧪 Test
-
-## 📏 Rules Evaluation
-
-## 🎯 3 Rules For Next Week
+- ✅ **Keep:**
+- 🔻 **Reduce:**
+- 🔁 **Change:**
+- 🧪 **Test:**
 
 ## 🧠 Context For Future AI Reviews
 ```
@@ -246,6 +348,21 @@ Prioritize:
 3. one specific change over a long list
 4. repeated patterns over one-off events
 5. high-control changes over abstract advice
+
+For `What Mattered`:
+
+- Use at most one concise line for each item.
+- Prefer repeated patterns and high-impact evidence over isolated details.
+- `Energy` should state what repeatedly helped and/or drained energy when that
+  evidence is useful for next week.
+- If evidence is insufficient, write `Not enough logged evidence`.
+
+For `Next Week`:
+
+- Keep each item to one concrete action.
+- `Test` is the only weekly experiment.
+- Copy the exact `Test` text into the private daily-template callout.
+- The experiment should be visible and controllable, not an abstract goal.
 
 ---
 

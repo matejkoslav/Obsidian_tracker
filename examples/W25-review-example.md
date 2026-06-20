@@ -1,104 +1,70 @@
-# W25 Weekly Review — 2026-06-15 to 2026-06-21
+# 🧭 WEEKLY DIRECTION
+
+W25 · 2026-06-15 to 2026-06-21
+
+## 🟢 ↗ IMPROVING
+
+🚀 **Output**
+███████░░░ **7.1 / 10**
+Previous week: 6.4
+
+📊 **Habits**
+███████░░░ **69%**
+Previous week: 62%
+
+**Verdict:** Output and habits both improved beyond the meaningful-change
+threshold.
+
+---
 
 ## 📈 Daily Score Trend
 
-Mon  6/10  ██████░░░░  🟢
-Tue  7/10  ███████░░░  🟢
-Wed  4/10  ████░░░░░░  🟠
-Thu  8/10  ████████░░  🟢
-Fri  7/10  ███████░░░  🟢
-Sat  5/10  █████░░░░░  🟠
-Sun  6/10  ██████░░░░  🟢
+Mon 6/10 ██████░░░░ 🟢
+Tue 8/10 ████████░░ 🟢
+Wed 5/10 █████░░░░░ 🟠
+Thu 7/10 ███████░░░ 🟢
+Fri 9/10 █████████░ 🟢
+Sat 6/10 ██████░░░░ 🟢
+Sun 9/10 █████████░ 🟢
 
-Trend: 6 → 7 → 4 → 8 → 7 → 5 → 6  
-Direction: ↗ improving, but unstable
-
----
-
-## 🚀 Needle-moving Output
-
-- Booking validation moved the project forward.
-- Pricing draft was concrete output.
-- Best days had at least one commit or finished deliverable.
+Trend: 6 → 8 → 5 → 7 → 9 → 6 → 9
 
 ---
 
-## 🧨 Fake Work / Time Leaks
+## 📊 Habit Progress
 
-- UI tweaking appeared before shipping.
-- Stack/tool comparison repeated even after the stack was already chosen.
-- Docs reading was useful only when capped and applied.
+Overall: 69% ███████░░░
 
----
+| Habit | Result | Bar |
+|---|---:|---|
+| Checkbox habit | 71% | ███████░░░ |
+| Measured habit | 82% | ████████░░ |
+| Limit habit | 54% | █████░░░░░ |
 
-## ⚡ Energy Patterns
-
-### 🟢 Energizing patterns
-
-- Clear coding tasks.
-- Walk after work.
-- Small shipped outputs.
-
-### 🟠 Neutral patterns
-
-- Groceries.
-- Admin.
-- Limited docs reading.
-
-### 🔴 Draining patterns
-
-- Vague docs tasks.
-- UI tweaking before output.
-- Night scrolling.
+Progress: Measured habit improved; the limit habit remains the clearest area
+to adjust.
 
 ---
 
-## ✅ Keep
+## 🔍 What Mattered
 
-- Start with clear coding task.
-- Keep walks after work.
-- Keep logging one concrete change for tomorrow.
-
-## 🔻 Reduce
-
-- Reduce UI tweaking before shipping.
-- Reduce model/tool/stack checking.
-- Reduce night scrolling after work.
-
-## 🔁 Change
-
-- Docs tasks need a 20-minute scope before starting.
-- First work block should produce visible output.
-
-## 🧪 Test
-
-- For 7 days: first 60 min = output only, no docs/tutorials/tools.
+- 🚀 **Moved forward:** Three concrete deliverables were finished.
+- 🧨 **Time leak:** Tool comparison repeatedly delayed the first output.
+- ⚡ **Energy:** Clear tasks helped momentum; late scrolling made starts harder.
 
 ---
 
-## 📏 Rules Evaluation
+## 🎯 Next Week
 
-| Rule | Decision | Why |
-|---|---|---|
-| First real output before tool/setup tweaking | keep | Strong match with better days |
-| One concrete change for tomorrow in every daily note | keep | Creates usable next actions |
-| If a task feels vague, reduce it to a 20-minute version | modify | Apply specifically to docs and school tasks |
-
----
-
-## 🎯 3 Rules For Next Week
-
-1. First 60 min = output only, no docs/tutorials/tools.
-2. If docs/school task is vague, do 20 minutes and ship a rough version.
-3. No UI/tool tweaking until one visible deliverable exists.
+- ✅ **Keep:** Start with one clearly defined deliverable.
+- 🔻 **Reduce:** Tool comparison before real work.
+- 🔁 **Change:** Give vague tasks a short time limit.
+- 🧪 **Test:** Finish one visible output before changing tools or setup.
 
 ---
 
 ## 🧠 Context For Future AI Reviews
 
-Carry forward these patterns:
-
-- User scores higher when first work block is concrete coding/shipping.
-- Repeated fake work: setup/tool/model/stack checking.
-- Main draining pattern: vague tasks with no first action.
-- Useful rule: output before tweaking.
+- Clear first tasks correlate with better output days.
+- Repeated time leak: checking tools before shipping.
+- Evaluate whether the visible-output experiment improves the first work block.
