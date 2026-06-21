@@ -11,6 +11,7 @@ writing interface. Codex/OpenCode is the reviewer and maintenance agent.
 - Keep generated weekly reviews direct, evidence-based, and actionable.
 - Preserve the existing weekly-review output structure unless the user
   explicitly asks to change it.
+- During chat-based brainstorming with the user, use the `caveman` skill for concise communication. Do not use caveman style when writing plans, docs, templates, examples, or generated reviews
 
 ## Public Safety
 
@@ -123,12 +124,27 @@ stop and ask before guessing.
 - Do not commit unless explicitly asked; normally only suggest the commit text.
 - Before suggesting a commit, inspect `git status --short`, scoped diff, and recent commit style.
 - Suggest only the commit for the requested changes; ignore unrelated worktree changes.
-- Keep the message short, direct, and outcome-focused.
-- Use this style:
+- After bigger implementation, fix, or refactor work, proactively suggest a ready-to-copy commit command unless the user clearly does not want commit guidance.
+- Use scoped `git add` commands that include only intended files and exclude unrelated worktree changes.
+- Prefer multiline commits with `git commit -m "subject" -m "body"` when the change benefits from a short body.
+- Use simple emoji conventional commits:
+  - `✨ feat` for new features or user-visible capability
+  - `🐛 fix` for bug fixes
+  - `♻️ refactor` for code cleanup without behavior change
+  - `📚 docs` for documentation changes
+  - `🎨 style` for formatting, CSS, or visual spacing
+  - `🧪 test` for tests
+  - `⚙️ chore` for maintenance, dependencies, or config
+  - `🔒 security` for security fixes
+  - `🚀 perf` for performance improvements
+  - `📦 build` for build process or packaging
+- Keep commit subjects short, plain, and concrete, like `✨ feat: simplify goals`.
+- Avoid abstract/product-management wording such as `alignment`, `visibility`, `schema`, or `implementation` when a simpler word describes the result.
+- Body can be multiline, but keep it direct and useful. Say the visible result plainly, for example: `Show goals at the top of daily notes.`
+- When recommending a commit, format it as a copy-paste command:
 
-```txt
-✨ feat: make AGENTS.md lean
-
-Move detailed week-review rules into docs/week-review.md.
-Keep AGENTS.md focused on public safety and command routing.
+```bash
+git add <intended files>
+git commit -m "✨ feat: simplify goals" -m "Show goals at the top of daily notes.
+Update docs, templates, and examples for the new goal format."
 ```

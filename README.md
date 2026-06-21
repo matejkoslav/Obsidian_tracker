@@ -22,8 +22,8 @@ week review
    optional habit progress, checks optional active goals, and compares the week
    with the previous review.
 4. The agent writes the review to `reviews/YYYY/MM/WXX-review.md`.
-5. The agent writes one concrete experiment into `templates/daily-template.md`
-   for the next week.
+5. The agent writes one concrete experiment and current active-goal visibility
+   into `templates/daily-template.md` for the next week.
 
 ## AI maintainer context
 
@@ -127,6 +127,10 @@ The first callout in the template contains one weekly experiment. Every
 `week review` replaces it with the next experiment, so newly created daily
 notes keep the current focus visible.
 
+If `goals/goals.md` contains valid active goals, the private daily template also
+shows an Active goals callout after the weekly experiment and before habits.
+When there are no active goals, the callout is omitted.
+
 No terminal script needed for daily notes.
 
 ---
@@ -151,14 +155,31 @@ does not alter that score.
 
 ## Optional goal alignment
 
-Keep no more than three active goals in `goals/goals.md` and mark exactly one
-as primary. Each weekly review compares concrete logged output with the goal
-outcome, completion condition, current milestone, and deadline.
+Keep no more than three active goals in `goals/goals.md`. Exactly one active
+goal must be primary, marked by `🔥` in the heading.
+
+Use this simplified schema:
+
+```md
+## 🔥 G1: Meal-planning demo
+
+- Status: 🟢 active
+- Deadline: 2026-07-31
+- Done when: A visitor can create and save a seven-day meal plan.
+```
+
+Valid statuses are `🟢 active`, `⏸️ paused`, and `✅ done`. Each weekly review
+compares concrete logged output with active goal headings, completion
+conditions, and deadlines. It does not automatically mark goals done.
 
 Use an optional `[G1]`, `[G2]`, or `[G3]` marker in a daily output when its goal
 would otherwise be ambiguous. Goal alignment reports `On track`, `At risk`,
 `Off track`, or `No evidence`, plus one next step. It does not change output or
 habit scores.
+
+During `week review`, valid active goals are refreshed into the private daily
+template so new daily notes show what matters. Only `🟢 active` goals appear,
+and the callout is omitted when there are no active goals.
 
 ---
 

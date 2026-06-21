@@ -33,19 +33,19 @@ Trend: 6 → 8 → 5 → 7 → 9 → 6 → 9
 
 ## 🧭 Goal Alignment
 
-### G1 · Primary · Publish a usable meal-planning web demo
+### 🔥 G1: Meal-planning demo
 
 - **Status:** 🟢 On track
 - **Evidence:** The editable weekly-plan screen was completed and tested with fictional meals.
 - **Next step:** Add saving for one seven-day plan.
 
-### G2 · Validate demand for a fictional neighborhood newsletter
+### G2: Newsletter demand test
 
 - **Status:** 🟠 At risk
-- **Evidence:** Two interview invitations were sent, but the milestone requires five and the deadline is approaching.
+- **Evidence:** Two interview invitations were sent, but the goal needs ten structured feedback responses by the deadline.
 - **Next step:** Send the remaining three invitations before Wednesday.
 
-### G3 · Create a concise public speaking practice guide
+### G3: Speaking practice guide
 
 - **Status:** ⚪ No evidence
 - **Evidence:** No logged output matched this goal during the reviewed week.

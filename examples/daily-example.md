@@ -4,6 +4,20 @@ Use this file as a reference. Do not use it as the daily template unless you wan
 
 ---
 
+## 🎯 Active Goal Visibility
+
+The private daily template can show active goals after the weekly experiment:
+
+> [!goal] 🎯 Active goals
+> 🔥 [[goals/goals#🔥 G1: Meal-planning demo|G1: Meal-planning demo]] — done when: A visitor can create and save a seven-day meal plan by 2026-07-31
+> [[goals/goals#G2: Newsletter demand test|G2: Newsletter demand test]] — done when: Ten test readers have submitted structured feedback by 2026-08-15
+> If output supports goal, write `[G1]` ... in "What moved the needle today?"
+
+Use `[G1]`, `[G2]`, or `[G3]` in the output section when a completed action
+supports a goal.
+
+---
+
 ## 🚀 Work Output
 
 ### What moved the needle today?

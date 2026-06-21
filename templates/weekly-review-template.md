@@ -32,9 +32,9 @@ Trend:
 
 ## 🧭 Goal Alignment
 
-Omit this section when `goals/goals.md` does not exist.
+Omit this section when `goals/goals.md` does not exist or has no valid active goals.
 
-### {{goal_id}} · {{primary_if_applicable}} · {{goal_outcome}}
+### {{fire_if_primary}}{{goal_id}}: {{goal_name}}
 
 - **Status:** {{goal_status}}
 - **Evidence:** {{one_evidence_based_sentence}}

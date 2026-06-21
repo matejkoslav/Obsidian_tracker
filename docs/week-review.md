@@ -113,8 +113,9 @@ reviews/YYYY/MM/WXX-review.md
 15. Include compact `What Mattered` and `Next Week` sections.
 16. Select exactly one concrete `Test` experiment for the next week.
 17. Replace the weekly-experiment callout at the top of the private
-    `templates/daily-template.md` with that `Test`. Do not rewrite existing
-    daily notes. If the callout is missing, add it at the top.
+    `templates/daily-template.md` with that `Test`, then refresh the Active
+    goals callout using the rules below. Do not rewrite existing daily notes.
+    If the weekly-experiment callout is missing, add it at the top.
 18. Include at most three bullets in `Context For Future AI Reviews`.
 19. Apply any explicit dated cleanup instruction in `rules/habit-rules.md` when
     its stated review date has been reached.
@@ -209,35 +210,67 @@ block per 10 percentage points:
 ## Goal Alignment
 
 Goal alignment is optional and configured only through the private
-`goals/goals.md` file. If the file does not exist, omit the section.
+`goals/goals.md` file. If the file does not exist, omit the section and omit
+the Active goals callout from `templates/daily-template.md`.
 
-Each goal must contain only:
+Each goal is defined by its heading and three fields:
 
-- `ID`
-- `Primary`
-- `Outcome`
-- `Deadline` in `YYYY-MM-DD` format
-- `Done when`
-- `Current milestone`
-- `Status`: `active`, `paused`, or `done`
+```md
+## 🔥 G1: Compiler portfolio
 
-Evaluate only goals with `Status: active`. There may be no more than three
-active goals, and exactly one active goal must use `Primary: yes`. If the
-configuration is invalid, do not guess or evaluate it; report the setup issue
-in the terminal/chat.
+- Status: 🟢 active
+- Deadline: 2026-07-31
+- Done when: Public demo exists and was sent to 3 people.
+```
+
+Use this schema exactly:
+
+- The goal heading is `## {{goal_id}}: {{goal_name}}`.
+- Exactly one active goal must be primary, marked by `🔥` before the goal ID in
+  the heading.
+- Valid statuses are `🟢 active`, `⏸️ paused`, and `✅ done`.
+- `Deadline` must use `YYYY-MM-DD` format.
+- `Done when` is the completion condition.
+- Do not use the old separate ID, primary, outcome, or milestone fields.
+
+Evaluate only goals with `Status: 🟢 active`. There may be no more than three
+active goals, and exactly one active goal must include `🔥` in the heading. If
+the configuration is invalid, do not guess, evaluate, or refresh the Active
+goals callout; report the setup issue in the terminal/chat.
+
+Refresh the private daily template after each weekly review:
+
+1. Place the Active goals callout after the `This week` callout and before
+   `## 📊 Habits`.
+2. Show only goals with `Status: 🟢 active`.
+3. Omit the callout when there are no active goals.
+4. Keep at most three active goals.
+5. Link to the goal heading in `goals/goals.md`.
+6. Strip one trailing period from `Done when` before appending ` by YYYY-MM-DD`.
+7. Include this instruction as the final callout line:
+   If output supports goal, write `[G1]` ... in "What moved the needle today?"
+
+Callout format:
+
+```md
+> [!goal] 🎯 Active goals
+> 🔥 [[goals/goals#🔥 G1: Compiler portfolio|G1: Compiler portfolio]] — done when: Public demo exists and was sent to 3 people by 2026-07-31
+> [[goals/goals#G2: Run 5 km|G2: Run 5 km]] — done when: Run 5 km under X by 2026-08-15
+> If output supports goal, write `[G1]` ... in "What moved the needle today?"
+```
 
 Match concrete output from the reviewed daily notes to each active goal:
 
 1. An explicit `[G1]`, `[G2]`, or `[G3]` marker links that output to the
-   matching goal and overrides automatic matching.
-2. Otherwise, match only when the output clearly supports the goal's `Outcome`,
-   `Done when`, or `Current milestone`.
+   matching active goal and overrides automatic matching.
+2. Otherwise, match only when the output clearly supports the goal heading or
+   `Done when` condition.
 3. Do not use plans, intentions, fake work, or unlogged assumptions as progress.
 4. If the evidence is ambiguous or absent, use `⚪ No evidence`.
 
 Assign exactly one status per active goal:
 
-- `🟢 On track`: concrete progress supports the current milestone and the
+- `🟢 On track`: concrete progress supports the completion condition and the
   deadline still appears realistic.
 - `🟠 At risk`: progress is weak, indirect, or insufficient for the remaining
   time.
@@ -248,16 +281,24 @@ Assign exactly one status per active goal:
 For every active goal, output exactly:
 
 ```md
-### G1 · Primary · [Outcome]
+### 🔥 G1: Compiler portfolio
 
 - **Status:** 🟢 On track
 - **Evidence:** [one evidence-based sentence]
 - **Next step:** [one concrete action]
 ```
 
-Omit `Primary` from non-primary goal headings. Keep the evidence to one
+Use `### {{fire_if_primary}}{{goal_id}}: {{goal_name}}` as the heading style.
+Do not add old role or result labels to the heading. Keep the evidence to one
 sentence and the next step to one action. Say `No evidence` instead of
 inventing progress, reasons, or confidence.
+
+If logged evidence shows the goal appears complete, do not edit
+`goals/goals.md` automatically. Use this exact next step instead:
+
+```md
+- **Next step:** Mark G1 as ✅ done.
+```
 
 Goal alignment must not change the daily output score, output average, habit
 results, or weekly direction calculation. Repeated goal misalignment may inform
