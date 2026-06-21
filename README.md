@@ -1,21 +1,40 @@
-# Obsidian_tracker
+# Obsidian Tracker
 
-Markdown/Obsidian system for quick daily logging and weekly Codex CLI reviews.
+Prompt-driven Markdown/Obsidian system for quick daily logging and weekly AI
+reviews. This is not an application: most behavior lives in `AGENTS.md`,
+`docs/week-review.md`, the Markdown templates, examples, and local private
+files.
 
-## Core idea
+Obsidian is the writing interface. Codex/OpenCode (or any other agent) is the
+weekly reviewer and maintenance agent.
 
-Daily: spend **1–5 min** logging only the notable things you remember.
+## Core loop
 
-Weekly: open Codex CLI in this folder and type:
+1. Spend **1–5 min** logging the day in `logs/DD-MM-YYYY.md`.
+2. At the end of the week, open Codex/OpenCode (or any other agent) in this
+   folder and type:
 
 ```txt
 week review
 ```
 
-Codex reads the current week, scores each day **0–10**, calculates optional
-habit progress, checks optional active goals, shows whether the week is
-improving or declining, and writes one experiment into the daily template for
-the next week.
+3. The agent reads the current week, scores each day **0–10**, calculates
+   optional habit progress, checks optional active goals, and compares the week
+   with the previous review.
+4. The agent writes the review to `reviews/YYYY/MM/WXX-review.md`.
+5. The agent writes one concrete experiment into `templates/daily-template.md`
+   for the next week.
+
+## AI maintainer context
+
+- Keep public-facing docs, examples, and templates in English.
+- Treat `logs/`, `reviews/`, `templates/daily-template.md`,
+  `rules/habit-rules.md`, and `goals/goals.md` as private/local data.
+- Prefer Markdown-first changes: agent contract, templates, examples, and docs
+  before adding scripts or app code.
+- Keep week-review behavior in `docs/week-review.md`; keep `AGENTS.md` as the
+  lean public-safe router.
+- Do not rewrite existing daily notes when changing the review process.
 
 ---
 
@@ -29,7 +48,8 @@ Obsidian_tracker/
 ├── .gitignore
 ├── .stignore
 ├── docs/
-│   └── obsidian-setup.md
+│   ├── obsidian-setup.md
+│   └── week-review.md
 ├── goals/
 │   └── goals.example.md
 ├── templates/
@@ -152,12 +172,13 @@ week review
 
 Expected result:
 
-- read `AGENTS.md`
+- read `AGENTS.md` and `docs/week-review.md`
 - analyze the current/most recent week in `logs/`
 - score each day **0–10**
 - compare the average output score with the previous review
 - show a dynamic improving/stable/mixed/declining verdict
 - create a daily visual trend with score-label emojis
+- include one short evidence reason for every daily score
 - calculate optional habit progress
 - evaluate optional active goals and deadline feasibility
 - write a review to `reviews/YYYY/MM/WXX-review.md`

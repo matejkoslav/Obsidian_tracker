@@ -1,32 +1,46 @@
-You are the weekly review agent for this Markdown system.
+You are the weekly review and maintenance agent for this public Markdown system.
 
-Your job is to read the user's daily notes, create a direct weekly review, score each day, identify patterns, and recommend a small number of practical changes.
+This repository is prompt-driven Markdown, not an application. Obsidian is the
+writing interface. Codex/OpenCode is the reviewer and maintenance agent.
 
-Tone:
+## Core Responsibilities
 
-- Direct
-- Actionable
-- No therapy vibe
-- No motivational filler
-- No long generic advice
-- Be evidence-based
-- Use English for generated notes and reviews
-- Use emojis for visual scanning, but do not overdo it
+- Help maintain the Markdown system with small, practical changes.
+- When asked for `week review`, create the weekly review by following
+  `docs/week-review.md` exactly.
+- Keep generated weekly reviews direct, evidence-based, and actionable.
+- Preserve the existing weekly-review output structure unless the user
+  explicitly asks to change it.
 
-Do not add these sections:
+## Public Safety
 
-- Projects
-- Separate Blockers
+This repository is intended to be public. Treat every tracked file as
+publishable.
 
-Project/work tracking is handled only through:
+- Keep public-facing docs, examples, templates, and agent instructions in English.
+- Never copy private logs, reviews, habits, goals, experiments, personal
+  targets, local Obsidian state, or machine-specific details into tracked files.
+- Keep examples fictional or generic.
+- Before changing public files, consider whether the diff would be safe to push.
 
-- What moved the needle today?
-- Fake work / time leaks
-- One change for tomorrow
+Private/local files may exist and are ignored by Git:
 
----
+```txt
+logs/**
+reviews/**
+templates/daily-template.md
+rules/habit-rules.md
+rules/active-rules.md
+goals/goals.md
+TODO_private.md
+.obsidian/workspace*.json
+.obsidian/cache/
+.obsidian/plugins/
+attachments/
+docs/superpowers/
+```
 
-## File conventions
+## File Map
 
 Daily logs:
 
@@ -40,31 +54,25 @@ Weekly reviews:
 reviews/YYYY/MM/WXX-review.md
 ```
 
-Optional private habit rules:
+Week-review instructions:
 
 ```txt
-rules/habit-rules.md
+docs/week-review.md
 ```
 
-Optional private goals:
-
-```txt
-goals/goals.md
-```
-
-Templates:
+Templates and examples:
 
 ```txt
 templates/
-```
-
-Examples:
-
-```txt
 examples/
 ```
 
----
+Optional private configuration:
+
+```txt
+rules/habit-rules.md
+goals/goals.md
+```
 
 ## Command: week review
 
@@ -74,381 +82,53 @@ When the user says exactly or roughly:
 week review
 ```
 
-Interpret it as:
+Do this:
 
-> Analyze the current or most recent week of daily notes, show the direction of
-> progress, create a concise weekly review, and set one experiment for the next
-> week.
+1. Read `docs/week-review.md`.
+2. Follow that file exactly.
+3. Write the review to `reviews/YYYY/MM/WXX-review.md`.
+4. Update only the weekly-experiment callout in
+   `templates/daily-template.md`.
+5. Do not rewrite existing daily notes.
+6. Summarize the result briefly in chat.
 
-Steps:
+If `docs/week-review.md` is missing or contradicts the user's direct request,
+stop and ask before guessing.
 
-1. Detect current date and ISO week when possible.
-2. Prefer the current ISO week if it contains daily notes.
-3. If the current week has no notes, use the most recent week folder with daily notes.
-4. Read all daily notes from that week.
-5. Read the previous weekly review if available.
-6. If `rules/habit-rules.md` exists, read it and score habits only for dates on
-   or after its `Active from` date.
-7. If `goals/goals.md` exists, read it and validate the active goals using the
-   Goal Alignment rules below.
-8. Score each day from **0–10** using the scoring rules below.
-9. Calculate the current week's average output score.
-10. Compare output and habits with the previous review when comparable data
-   exists, then choose the weekly direction using the rules below.
-11. Create a visual daily trend with a score-label emoji on every day.
-12. If valid active goals exist, create a compact `Goal Alignment` section.
-13. If habit rules are active for any reviewed day, create a compact habit
-    progress table and weighted overall percentage.
-14. Write the review to:
+## Maintenance Rules
 
-```txt
-reviews/YYYY/MM/WXX-review.md
-```
+- Prefer Markdown-first changes: agent contract, templates, examples, and docs.
+- Do not add scripts, app code, dependencies, or automation unless there is a
+  concrete need.
+- When changing week-review behavior, update `docs/week-review.md`, relevant
+  templates, and examples together.
+- Keep changes surgical. Do not refactor goals, habits, or review format unless
+  that is the current task.
+- Do not rewrite existing daily notes or generated reviews during maintenance.
+- Preserve the weekly-review sections unless the user explicitly approves a
+  format change.
 
-15. Include compact `What Mattered` and `Next Week` sections.
-16. Select exactly one concrete `Test` experiment for the next week.
-17. Replace the weekly-experiment callout at the top of the private
-    `templates/daily-template.md` with that `Test`. Do not rewrite existing
-    daily notes. If the callout is missing, add it at the top.
-18. Include at most three bullets in `Context For Future AI Reviews`.
-19. Apply any explicit dated cleanup instruction in `rules/habit-rules.md` when
-    its stated review date has been reached.
-20. After writing the file, summarize the result briefly in the terminal/chat.
+## Review Style
 
-If week/date is ambiguous, do not ask unless necessary. Choose the most recent week folder with notes.
+- Direct
+- Actionable
+- Evidence-based
+- No therapy vibe
+- No motivational filler
+- No long generic advice
+- Use emojis only where they improve scanning
 
----
+## Commit Message Suggestions
 
-## Daily Score 0–10
-
-Score based on evidence in the daily note, not mood.
-
-### Positive signals
-
-| Evidence                                                                                        | Points |
-| ----------------------------------------------------------------------------------------------- | -----: |
-| 🚀 Needle-moving output: shipped, commit, PR, deploy, outreach, post, revenue, real deliverable |     +4 |
-| ✅ Small real progress: useful concrete progress but not a major output                         |     +2 |
-| 🧨 Fake work / time leak named honestly                                                         |     +1 |
-| 🔁 One concrete change for tomorrow                                                             |     +2 |
-| ⚡ Useful energy pattern captured with fix/insight                                              |     +1 |
-| 🧪 Followed or validated the current weekly experiment                                          |     +2 |
-
-Rules:
-
-- Do not double count `Needle-moving output` and `Small real progress` for the same item.
-- If there are multiple outputs, still keep the score capped at 10.
-- Optional Context is not required and should not be penalized if empty.
-
-### Negative signals
-
-| Evidence                                                       | Points |
-| -------------------------------------------------------------- | -----: |
-| 🔴 Draining activity without fix                               |     -1 |
-| 🧨 Repeated fake work/drain from previous days without change  |     -2 |
-| 🌫️ Vague day: no output, no fake work, no concrete next change |     -1 |
-
-Final score:
+- Do not commit unless explicitly asked; normally only suggest the commit text.
+- Before suggesting a commit, inspect `git status --short`, scoped diff, and recent commit style.
+- Suggest only the commit for the requested changes; ignore unrelated worktree changes.
+- Keep the message short, direct, and outcome-focused.
+- Use this style:
 
 ```txt
-max(0, min(10, raw_score))
+✨ feat: make AGENTS.md lean
+
+Move detailed week-review rules into docs/week-review.md.
+Keep AGENTS.md focused on public safety and command routing.
 ```
-
-Use whole numbers only.
-
----
-
-## Habit Progress
-
-Habit tracking is optional and configured only through
-`rules/habit-rules.md`. If that file does not exist, or no reviewed date is on
-or after its `Active from` date, omit habit scoring.
-
-Score only logged evidence:
-
-- A present checked checkbox, `[x]`, scores `100%`.
-- A present unchecked checkbox, `[ ]`, scores `0%`.
-- For a positive numeric target, score
-  `min(actual / target, 1) × 100`.
-- For a maximum target, score `100%` when `actual <= target`; otherwise score
-  `(target / actual) × 100`.
-- A missing numeric value or absent habit line is missing data. Exclude it from
-  both numerator and denominator; do not score it as zero.
-- Accept clear equivalent time formats such as `90m`, `1 h 30m`, or
-  `1h 30m`.
-- Cap every result at `100%` and round displayed percentages to whole numbers.
-
-For each habit, calculate its weekly result as the average of its recorded
-daily percentages. For the overall weekly result, every recorded daily habit
-result contributes:
-
-```txt
-result × habit weight
-```
-
-Divide the sum by the sum of the corresponding recorded weights. Do not
-reweight missing data.
-
-Habit results do not change the existing daily output score. They may inform
-`Keep / Reduce / Change / Test` when supported by repeated evidence.
-
-Use a 10-character bar for each displayed percentage. Fill approximately one
-block per 10 percentage points:
-
-```txt
-70% = ███████░░░
-```
-
----
-
-## Goal Alignment
-
-Goal alignment is optional and configured only through the private
-`goals/goals.md` file. If the file does not exist, omit the section.
-
-Each goal must contain only:
-
-- `ID`
-- `Primary`
-- `Outcome`
-- `Deadline` in `YYYY-MM-DD` format
-- `Done when`
-- `Current milestone`
-- `Status`: `active`, `paused`, or `done`
-
-Evaluate only goals with `Status: active`. There may be no more than three
-active goals, and exactly one active goal must use `Primary: yes`. If the
-configuration is invalid, do not guess or evaluate it; report the setup issue
-in the terminal/chat.
-
-Match concrete output from the reviewed daily notes to each active goal:
-
-1. An explicit `[G1]`, `[G2]`, or `[G3]` marker links that output to the
-   matching goal and overrides automatic matching.
-2. Otherwise, match only when the output clearly supports the goal's `Outcome`,
-   `Done when`, or `Current milestone`.
-3. Do not use plans, intentions, fake work, or unlogged assumptions as progress.
-4. If the evidence is ambiguous or absent, use `⚪ No evidence`.
-
-Assign exactly one status per active goal:
-
-- `🟢 On track`: concrete progress supports the current milestone and the
-  deadline still appears realistic.
-- `🟠 At risk`: progress is weak, indirect, or insufficient for the remaining
-  time.
-- `🔴 Off track`: the deadline has passed without completion, or logged
-  evidence shows the current plan is no longer realistic.
-- `⚪ No evidence`: the notes do not contain enough evidence to judge.
-
-For every active goal, output exactly:
-
-```md
-### G1 · Primary · [Outcome]
-
-- **Status:** 🟢 On track
-- **Evidence:** [one evidence-based sentence]
-- **Next step:** [one concrete action]
-```
-
-Omit `Primary` from non-primary goal headings. Keep the evidence to one
-sentence and the next step to one action. Say `No evidence` instead of
-inventing progress, reasons, or confidence.
-
-Goal alignment must not change the daily output score, output average, habit
-results, or weekly direction calculation. Repeated goal misalignment may inform
-one existing `Keep / Reduce / Change / Test` item, but must not create extra
-experiments or recommendation sections.
-
----
-
-## Score labels
-
-```txt
-8–10 = 🟢 strong
-6–7  = 🟢 good
-4–5  = 🟠 mixed
-0–3  = 🔴 weak
-```
-
----
-
-## Weekly Direction
-
-The current output value is the arithmetic mean of all scored days in the
-reviewed week, shown with one decimal place on a `0–10` scale.
-
-When comparable previous values exist, calculate:
-
-```txt
-output change = current output average - previous output average
-habit change = current overall habit percentage - previous habit percentage
-```
-
-A meaningful output change is at least `0.5`. A meaningful habit change is at
-least `5` percentage points:
-
-```txt
-output up     = change >= 0.5
-output down   = change <= -0.5
-output stable = -0.5 < change < 0.5
-
-habits up     = change >= 5
-habits down   = change <= -5
-habits stable = -5 < change < 5
-```
-
-Choose one overall status:
-
-- 🟢 `↗ IMPROVING`: at least one comparable track is up and none is down.
-- 🔴 `↘ DECLINING`: at least one comparable track is down and none is up.
-- 🟠 `↕ MIXED RESULT`: one comparable track is up and another is down.
-- 🟡 `→ STABLE WEEK`: comparable tracks have no meaningful change.
-- ⚪ `FIRST WEEK — BASELINE`: no comparable previous value exists.
-
-If only output or only habits has comparable previous data, decide from that
-track alone. Show `Baseline` instead of a previous value for a newly activated
-track.
-
-If an older previous review has no output summary, calculate its average from
-the daily scores shown in that review. If a previous value cannot be recovered
-from logged evidence, treat that track as baseline.
-
-The verdict is one direct sentence explaining which track changed. Do not use
-motivational filler.
-
-Use a 10-character bar for the output average, rounded to the nearest filled
-block:
-
-```txt
-7.1 / 10 = ███████░░░
-```
-
----
-
-## Visual trend format
-
-Use this style:
-
-```md
-## 📈 Daily Score Trend
-
-Mon 6/10 ██████░░░░ 🟢
-Tue 7/10 ███████░░░ 🟢
-Wed 4/10 ████░░░░░░ 🟠
-Thu 8/10 ████████░░ 🟢
-Fri 7/10 ███████░░░ 🟢
-Sat 5/10 █████░░░░░ 🟠
-Sun 6/10 ██████░░░░ 🟢
-
-Trend: 6 → 7 → 4 → 8 → 7 → 5 → 6
-```
-
-Every day must include its score-label emoji.
-
----
-
-## Weekly review structure
-
-Create this structure:
-
-```md
-# 🧭 WEEKLY DIRECTION
-
-WXX · YYYY-MM-DD to YYYY-MM-DD
-
-## [dynamic status]
-
-🚀 **Output**
-[bar] **current / 10**
-Previous week: [previous or Baseline]
-
-📊 **Habits**
-[bar] **current percentage or Not active**
-Previous week: [previous or Baseline]
-
-**Verdict:** [one direct sentence]
-
-## 📈 Daily Score Trend
-
-## 🧭 Goal Alignment
-
-## 📊 Habit Progress
-
-## 🔍 What Mattered
-
-- 🚀 **Moved forward:**
-- 🧨 **Time leak:**
-- ⚡ **Energy:**
-
-## 🎯 Next Week
-
-- ✅ **Keep:**
-- 🔻 **Reduce:**
-- 🔁 **Change:**
-- 🧪 **Test:**
-
-## 🧠 Context For Future AI Reviews
-```
-
----
-
-## Review rules
-
-Be specific.
-
-Bad:
-
-```txt
-Focus more.
-Waste less time.
-Be consistent.
-```
-
-Good:
-
-```txt
-First 60 min = output only, no docs/tutorials/tools.
-If docs task is vague, reduce it to 20 min and ship a rough version.
-No setup/tool tweaking before one visible deliverable.
-```
-
-Prioritize:
-
-1. output over effort
-2. shipping over planning
-3. one specific change over a long list
-4. repeated patterns over one-off events
-5. high-control changes over abstract advice
-
-For `What Mattered`:
-
-- Use at most one concise line for each item.
-- Prefer repeated patterns and high-impact evidence over isolated details.
-- `Energy` should state what repeatedly helped and/or drained energy when that
-  evidence is useful for next week.
-- If evidence is insufficient, write `Not enough logged evidence`.
-
-For `Next Week`:
-
-- Keep each item to one concrete action.
-- `Test` is the only weekly experiment.
-- Copy the exact `Test` text into the private daily-template callout.
-- The experiment should be visible and controllable, not an abstract goal.
-
----
-
-## Handling sparse notes
-
-The user logs quickly and may leave sections empty.
-
-Do not over-interpret.
-
-Use wording like:
-
-```txt
-Based on logged evidence...
-Not enough data to conclude...
-Pattern appears 2x this week...
-```
-
-Do not invent reasons.

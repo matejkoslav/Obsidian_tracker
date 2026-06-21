@@ -18,13 +18,13 @@ Previous week: —
 
 ## 📈 Daily Score Trend
 
-Mon —/10 ░░░░░░░░░░ {{signal}}
-Tue —/10 ░░░░░░░░░░ {{signal}}
-Wed —/10 ░░░░░░░░░░ {{signal}}
-Thu —/10 ░░░░░░░░░░ {{signal}}
-Fri —/10 ░░░░░░░░░░ {{signal}}
-Sat —/10 ░░░░░░░░░░ {{signal}}
-Sun —/10 ░░░░░░░░░░ {{signal}}
+Mon —/10 ░░░░░░░░░░ {{signal}} — {{score_evidence}}
+Tue —/10 ░░░░░░░░░░ {{signal}} — {{score_evidence}}
+Wed —/10 ░░░░░░░░░░ {{signal}} — {{score_evidence}}
+Thu —/10 ░░░░░░░░░░ {{signal}} — {{score_evidence}}
+Fri —/10 ░░░░░░░░░░ {{signal}} — {{score_evidence}}
+Sat —/10 ░░░░░░░░░░ {{signal}} — {{score_evidence}}
+Sun —/10 ░░░░░░░░░░ {{signal}} — {{score_evidence}}
 
 Trend:
 

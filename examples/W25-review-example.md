@@ -19,13 +19,13 @@ threshold.
 
 ## 📈 Daily Score Trend
 
-Mon 6/10 ██████░░░░ 🟢
-Tue 8/10 ████████░░ 🟢
-Wed 5/10 █████░░░░░ 🟠
-Thu 7/10 ███████░░░ 🟢
-Fri 9/10 █████████░ 🟢
-Sat 6/10 ██████░░░░ 🟢
-Sun 9/10 █████████░ 🟢
+Mon 6/10 ██████░░░░ 🟢 — shipped a small deliverable, named tool comparison leak, set output-first change
+Tue 8/10 ████████░░ 🟢 — completed useful feature work, reduced planning drift, set narrow follow-up
+Wed 5/10 █████░░░░░ 🟠 — made partial progress, logged weak output, set a concrete next change
+Thu 7/10 ███████░░░ 🟢 — finished a visible draft, named context switching, captured energy pattern
+Fri 9/10 █████████░ 🟢 — shipped three concrete outputs, followed experiment, set next delivery step
+Sat 6/10 ██████░░░░ 🟢 — completed maintenance progress, logged fake work, set a smaller task
+Sun 9/10 █████████░ 🟢 — finished the weekly review, selected next experiment, updated template
 
 Trend: 6 → 8 → 5 → 7 → 9 → 6 → 9
 
