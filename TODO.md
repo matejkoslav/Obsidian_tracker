@@ -4,3 +4,7 @@
 - [x] refine readme (its written by ai)
 - [x] refine gitignore (comments...)
 - [x] refine goals (just made this quick without brainstorming)
+- [ ] health connect: steps
+- [ ] health connect: activity (gym/bike...)
+- [ ] health connect: sleep (resting hr, hrv, regularity)
+- [ ] work tracked time (Toggl track)
