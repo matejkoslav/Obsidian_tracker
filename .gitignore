@@ -1,35 +1,29 @@
-# Personal weekly-review data
+# Private daily logs and generated reviews
 logs/**
 !logs/.gitkeep
-
 reviews/**
 !reviews/.gitkeep
 
-
-# Personal habit configuration
+# Private local configuration copied from public examples
 templates/daily-template.md
 rules/active-rules.md
 rules/habit-rules.md
 goals/goals.md
+TODO_private.md
 
-
-# Local Obsidian state
+# Obsidian local state and private media
 .obsidian/workspace*.json
 .obsidian/cache/
 .obsidian/plugins/
 attachments/
 
-TODO_private.md
-
-# Local Codex state
+# Local agent state and generated planning drafts
 .codex/
 .agents/
-docs/superpowers
+docs/superpowers/
 
-# OS files
+# OS, trash, and sync runtime files
 .DS_Store
 .trash/
-
-# Syncthing
-.stfolder
-.stversions
+.stfolder/
+.stversions/
