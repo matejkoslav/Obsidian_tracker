@@ -1,6 +1,6 @@
 - [x] goals
 - [x] habits
 - [x] refine agents md (its too long)
-- [ ] refine readme (its written by ai)
-- [ ] refine gitignore (comments...)
+- [x] refine readme (its written by ai)
+- [x] refine gitignore (comments...)
 - [x] refine goals (just made this quick without brainstorming)

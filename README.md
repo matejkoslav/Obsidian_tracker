@@ -1,114 +1,27 @@
 # Obsidian Tracker
 
-Prompt-driven Markdown/Obsidian system for quick daily logging and weekly AI
-reviews. This is not an application: most behavior lives in `AGENTS.md`,
-`docs/week-review.md`, the Markdown templates, examples, and local private
-files.
+A lightweight Obsidian vault for daily logging and weekly AI reviews.
 
-Obsidian is the writing interface. Codex/OpenCode (or any other agent) is the
-weekly reviewer and maintenance agent.
+Each day you write a short note: what moved, what leaked time, and one change
+for tomorrow. At the end of the week, run `week review`; the agent reads the
+daily notes, scores the week, writes a review, and sets next week's experiment.
 
-## Core loop
+This is not an app. It is a Markdown system built around Obsidian, `AGENTS.md`,
+`docs/week-review.md`, templates, examples, and private local notes.
 
-1. Spend **1–5 min** logging the day in `logs/DD-MM-YYYY.md`.
-2. At the end of the week, open Codex/OpenCode (or any other agent) in this
-   folder and type:
+## Quick Start
 
-```txt
-week review
-```
-
-3. The agent reads the current week, scores each day **0–10**, calculates
-   optional habit progress, checks optional active goals, and compares the week
-   with the previous review.
-4. The agent writes the review to `reviews/YYYY/MM/WXX-review.md`.
-5. The agent writes one concrete experiment and current active-goal visibility
-   into `templates/daily-template.md` for the next week.
-
-## AI maintainer context
-
-- Keep public-facing docs, examples, and templates in English.
-- Treat `logs/`, `reviews/`, `templates/daily-template.md`,
-  `rules/habit-rules.md`, and `goals/goals.md` as private/local data.
-- Prefer Markdown-first changes: agent contract, templates, examples, and docs
-  before adding scripts or app code.
-- Keep week-review behavior in `docs/week-review.md`; keep `AGENTS.md` as the
-  lean public-safe router.
-- Do not rewrite existing daily notes when changing the review process.
-
----
-
-## Folder structure
-
-```txt
-Obsidian_tracker/
-├── AGENTS.md
-├── README.md
-├── SYNC.md
-├── .gitignore
-├── .stignore
-├── docs/
-│   ├── obsidian-setup.md
-│   └── week-review.md
-├── goals/
-│   └── goals.example.md
-├── templates/
-│   ├── daily-template.example.md
-│   └── weekly-review-template.md
-├── logs/
-│   └── .gitkeep
-├── reviews/
-│   └── .gitkeep
-├── rules/
-│   └── habit-rules.example.md
-└── examples/
-    ├── daily-example.md
-    └── W25-review-example.md
-```
-
----
-
-## Setup
-
-Clone or download this repository, then create your private daily template:
+Clone or download the repository, then create your private local files:
 
 ```bash
 cp templates/daily-template.example.md templates/daily-template.md
-```
-
-For optional habit scoring, also create private habit rules:
-
-```bash
 cp rules/habit-rules.example.md rules/habit-rules.md
-```
-
-For optional goal alignment, create a private goals file:
-
-```bash
 cp goals/goals.example.md goals/goals.md
 ```
 
-Customize `templates/daily-template.md` locally. It is excluded from Git, so
-personal habit names do not need to be published. Customize
-`rules/habit-rules.md` with matching targets and weights; higher weights have
-more influence on the overall habit percentage.
+Open the folder as an Obsidian vault.
 
-Open the repository folder as an Obsidian vault.
-
-Your personal daily logs, generated weekly reviews, goals, habit configuration,
-private daily template, idea notes, and local Obsidian workspace state are
-excluded from Git by `.gitignore`.
-
-The `logs/` and `reviews/` folders already exist in the repository because they
-contain `.gitkeep` placeholder files.
-
----
-
-## Daily workflow
-
-Use Obsidian Daily Notes.
-
-Recommended Obsidian settings:
+Recommended Obsidian Daily Notes settings:
 
 ```txt
 Date format:
@@ -121,48 +34,67 @@ New file location:
 logs
 ```
 
-Then use the Daily Notes button or hotkey to open today's note.
+Use Obsidian's Daily Notes button or hotkey to create today's note.
 
-The first callout in the template contains one weekly experiment. Every
-`week review` replaces it with the next experiment, so newly created daily
-notes keep the current focus visible.
+## Daily Log
 
-If `goals/goals.md` contains valid active goals, the private daily template also
-shows an Active goals callout after the weekly experiment and before habits.
-When there are no active goals, the callout is omitted.
+The most important fields are:
 
-No terminal script needed for daily notes.
+```txt
+What moved the needle today?
+Fake work / time leaks
+One change for tomorrow
+```
 
----
+Log real output, not effort. A good note can take 1-5 minutes.
 
-## Optional habit tracking
+The daily template can also track habits, one `Hard thing`, goals, energy, and
+optional context. These are useful, but secondary.
 
-The private daily template can contain:
+## Weekly Review
 
-- checkbox habits for yes/no results
-- measured habits such as time or quantity
-- limit habits where lower values meet the target
+From this folder, open Codex/OpenCode or another compatible agent and type:
 
-Optional targets and weights can be stored in the private
-`rules/habit-rules.md` file. During `week review`, Codex can calculate each
-habit's weekly result and one weighted overall percentage. Missing measured
-values are excluded rather than counted as failures.
+```txt
+week review
+```
 
-Habit progress is shown in the same weekly review as the output score, but it
-does not alter that score.
+The agent will:
 
-For a daily uncomfortable action, add a yes/no habit such as `Hard thing` to the
-private template and rules. During `week review`, it is scored as a habit. It
-only affects the output score when the action also created real logged output.
+- read the current or most recent week in `logs/`
+- score each day from `0-10`
+- calculate optional habit progress
+- evaluate optional active goals
+- write the review to `reviews/YYYY/MM/WXX-review.md`
+- update `templates/daily-template.md` with next week's experiment
 
----
+The review format and scoring rules live in `docs/week-review.md`.
 
-## Optional goal alignment
+## Optional Tracking
 
-Keep no more than three active goals in `goals/goals.md`. Exactly one active
-goal must be primary, marked by `🔥` in the heading.
+### Habits
 
-Use this simplified schema:
+Use `rules/habit-rules.md` to define private habit targets and weights. The
+daily template can contain checkbox habits, measured habits, and limit habits.
+
+Habit progress appears in the weekly review, but it does not change the output
+score.
+
+### Hard Thing
+
+Add one uncomfortable or avoided action per day:
+
+```md
+- [ ] Hard thing:
+```
+
+During `week review`, this is scored as a yes/no habit. It affects the output
+score only when the action also created real logged output.
+
+### Goals
+
+Keep up to three active goals in `goals/goals.md`. Exactly one active goal must
+be primary, marked with `🔥`.
 
 ```md
 ## 🔥 G1: Meal-planning demo
@@ -172,70 +104,44 @@ Use this simplified schema:
 - Done when: A visitor can create and save a seven-day meal plan.
 ```
 
-Valid statuses are `🟢 active`, `⏸️ paused`, and `✅ done`. Each weekly review
-compares concrete logged output with active goal headings, completion
-conditions, and deadlines. It does not automatically mark goals done.
+Use `[G1]`, `[G2]`, or `[G3]` in daily output when the goal link would otherwise
+be unclear. Goal alignment reports `On track`, `At risk`, `Off track`, or
+`No evidence`; it does not automatically mark goals done.
 
-Use an optional `[G1]`, `[G2]`, or `[G3]` marker in a daily output when its goal
-would otherwise be ambiguous. Goal alignment reports `On track`, `At risk`,
-`Off track`, or `No evidence`, plus one next step. It does not change output or
-habit scores.
+## Privacy
 
-During `week review`, valid active goals are refreshed into the private daily
-template so new daily notes show what matters. Only `🟢 active` goals appear,
-and the callout is omitted when there are no active goals.
+Tracked files are intended to be public. Real personal data stays local.
 
----
+Ignored by Git:
 
-## Weekly workflow
+- `logs/`
+- `reviews/`
+- `templates/daily-template.md`
+- `rules/habit-rules.md`
+- `rules/active-rules.md`
+- `goals/goals.md`
+- `TODO_private.md`
+- local Obsidian workspace/cache/plugin state
+- attachments and local agent state
 
-From the `Obsidian_tracker/` folder, open Codex CLI and type:
+Public files use fictional examples only. The `logs/` and `reviews/` folders
+are kept in the repository with `.gitkeep` placeholders.
 
-```txt
-week review
-```
+## Files
 
-Expected result:
+- `AGENTS.md` - agent instructions and repository rules
+- `docs/week-review.md` - exact weekly-review behavior
+- `templates/daily-template.example.md` - public daily-note starter template
+- `templates/weekly-review-template.md` - weekly review shape
+- `rules/habit-rules.example.md` - public habit-rule example
+- `goals/goals.example.md` - public goal example
+- `examples/` - sample daily notes and weekly reviews
+- `SYNC.md` - optional Android sync workflow
 
-- read `AGENTS.md` and `docs/week-review.md`
-- analyze the current/most recent week in `logs/`
-- score each day **0–10**
-- compare the average output score with the previous review
-- show a dynamic improving/stable/mixed/declining verdict
-- create a daily visual trend with score-label emojis
-- include one short evidence reason for every daily score
-- calculate optional habit progress
-- evaluate optional active goals and deadline feasibility
-- write a review to `reviews/YYYY/MM/WXX-review.md`
-- summarize what moved, leaked time, and affected energy
-- select one weekly experiment and update the private daily template
+## Mobile
 
----
+The vault is ordinary Markdown, so it can sync between desktop and Android with
+Syncthing. Keep device-specific `.obsidian/` state local, wait for Syncthing to
+show **Up to Date**, and avoid editing the same note on two devices at once.
 
-## Optional Android sync and mobile review
-
-Because the system uses ordinary Markdown files, logs, templates, private
-rules, and generated reviews can sync between a computer and Android through
-Syncthing. Codex CLI can then run the same `week review` command from the
-synced vault on the phone.
-
-Keep device-specific `.obsidian/` state local, wait for Syncthing to show
-**Up to Date**, and avoid editing the same note on two devices simultaneously.
-
-See [SYNC.md](SYNC.md) for the full setup.
-
----
-
-## Daily note priority
-
-The most important sections are:
-
-```txt
-What moved the needle today?
-Fake work / time leaks
-One change for tomorrow
-```
-
-The Energy Log is useful but secondary.
-
-Optional Context is only for relevant state changes like bad sleep, caffeine, hunger, messy room, stress, or flow.
+See [SYNC.md](SYNC.md) for the full mobile setup.
