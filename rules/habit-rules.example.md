@@ -20,6 +20,7 @@ Higher weight means the habit has more influence on the overall habit score:
 | Habit | Target | Weight |
 |---|---:|---:|
 | Checkbox habit | yes/no | 3 |
+| Hard thing | yes/no | 3 |
 | Measured habit | 30m | 2 |
 | Quantity habit | 5000 | 1 |
 | Limit habit | max 2h | 1 |

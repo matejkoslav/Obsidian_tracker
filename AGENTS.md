@@ -88,8 +88,8 @@ Do this:
 1. Read `docs/week-review.md`.
 2. Follow that file exactly.
 3. Write the review to `reviews/YYYY/MM/WXX-review.md`.
-4. Update only the weekly-experiment callout in
-   `templates/daily-template.md`.
+4. Update the weekly-experiment and Active goals callouts in
+   `templates/daily-template.md`, following `docs/week-review.md`.
 5. Do not rewrite existing daily notes.
 6. Summarize the result briefly in chat.
 
@@ -144,7 +144,6 @@ stop and ask before guessing.
 - When recommending a commit, format it as a copy-paste command:
 
 ```bash
-git add <intended files>
-git commit -m "✨ feat: simplify goals" -m "Show goals at the top of daily notes.
-Update docs, templates, and examples for the new goal format."
+git commit -m "✨ feat: simplify goals" -m "Show goals at the top of daily notes"
+-m "Update docs, templates, and examples for the new goal format" -m "Update commit suggestion rules"
 ```

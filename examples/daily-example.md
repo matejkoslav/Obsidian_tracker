@@ -9,12 +9,34 @@ Use this file as a reference. Do not use it as the daily template unless you wan
 The private daily template can show active goals after the weekly experiment:
 
 > [!goal] 🎯 Active goals
-> 🔥 [[goals/goals#🔥 G1: Meal-planning demo|G1: Meal-planning demo]] — done when: A visitor can create and save a seven-day meal plan by 2026-07-31
-> [[goals/goals#G2: Newsletter demand test|G2: Newsletter demand test]] — done when: Ten test readers have submitted structured feedback by 2026-08-15
+> 🔥 [[goals/goals#🔥 G1: Meal-planning demo|G1: Meal-planning demo]] — done when: A visitor can create and save a seven-day meal plan by 31.7.2026
+> [[goals/goals#G2: Newsletter demand test|G2: Newsletter demand test]] — done when: Ten test readers have submitted structured feedback by 15.8.2026
 > If output supports goal, write `[G1]` ... in "What moved the needle today?"
 
 Use `[G1]`, `[G2]`, or `[G3]` in the output section when a completed action
 supports a goal.
+
+---
+
+## 🧱 Hard Thing
+
+Use this as a yes/no habit for one uncomfortable or avoided action per day.
+Write the action after the colon.
+
+Good examples:
+
+- `[x] Hard thing: sent the uncomfortable follow-up email`
+- `[x] Hard thing: started the task I avoided before opening YouTube`
+- `[x] Hard thing: asked for feedback on the rough draft`
+
+Bad examples:
+
+- `[x] Hard thing:`
+- `[x] Hard thing: worked hard`
+- `[x] Hard thing: thought about the problem`
+
+If the hard thing also creates real output, log that output in `What moved the
+needle today?` too.
 
 ---
 

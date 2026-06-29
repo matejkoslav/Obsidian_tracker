@@ -151,6 +151,10 @@ values are excluded rather than counted as failures.
 Habit progress is shown in the same weekly review as the output score, but it
 does not alter that score.
 
+For a daily uncomfortable action, add a yes/no habit such as `Hard thing` to the
+private template and rules. During `week review`, it is scored as a habit. It
+only affects the output score when the action also created real logged output.
+
 ---
 
 ## Optional goal alignment
@@ -164,7 +168,7 @@ Use this simplified schema:
 ## 🔥 G1: Meal-planning demo
 
 - Status: 🟢 active
-- Deadline: 2026-07-31
+- Deadline: 31.7.2026
 - Done when: A visitor can create and save a seven-day meal plan.
 ```
 

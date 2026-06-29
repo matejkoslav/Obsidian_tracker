@@ -3,4 +3,4 @@
 - [x] refine agents md (its too long)
 - [ ] refine readme (its written by ai)
 - [ ] refine gitignore (comments...)
-- [ ] refine goals (just made this quick without brainstorming)
+- [x] refine goals (just made this quick without brainstorming)

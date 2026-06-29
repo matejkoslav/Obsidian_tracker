@@ -198,6 +198,22 @@ reweight missing data.
 Habit results do not change the existing daily output score. They may inform
 `Keep / Reduce / Change / Test` when supported by repeated evidence.
 
+### Hard Thing
+
+If the daily template contains a `Hard thing` checkbox habit, score it like any
+other yes/no habit. Treat the text after `Hard thing:` as the evidence for what
+was uncomfortable or avoided.
+
+Rules:
+
+- A checked `Hard thing` with a concrete action counts as completed.
+- A checked `Hard thing` with no concrete action is weak evidence; mention this
+  if it repeats.
+- Do not add output-score points only because the action felt hard. Award
+  output points only when it also created real logged output.
+- Summarize the weekly pattern in `What Mattered` when completion, avoidance,
+  or weak evidence clearly affected the week.
+
 Use a 10-character bar for each displayed percentage. Fill approximately one
 block per 10 percentage points:
 
@@ -219,7 +235,7 @@ Each goal is defined by its heading and three fields:
 ## 🔥 G1: Compiler portfolio
 
 - Status: 🟢 active
-- Deadline: 2026-07-31
+- Deadline: 31.7.2026
 - Done when: Public demo exists and was sent to 3 people.
 ```
 
@@ -229,7 +245,7 @@ Use this schema exactly:
 - Exactly one active goal must be primary, marked by `🔥` before the goal ID in
   the heading.
 - Valid statuses are `🟢 active`, `⏸️ paused`, and `✅ done`.
-- `Deadline` must use `YYYY-MM-DD` format.
+- `Deadline` must use `D.M.YYYY` format.
 - `Done when` is the completion condition.
 - Do not use the old separate ID, primary, outcome, or milestone fields.
 
@@ -246,7 +262,7 @@ Refresh the private daily template after each weekly review:
 3. Omit the callout when there are no active goals.
 4. Keep at most three active goals.
 5. Link to the goal heading in `goals/goals.md`.
-6. Strip one trailing period from `Done when` before appending ` by YYYY-MM-DD`.
+6. Strip one trailing period from `Done when` before appending ` by D.M.YYYY`.
 7. Include this instruction as the final callout line:
    If output supports goal, write `[G1]` ... in "What moved the needle today?"
 
@@ -254,8 +270,8 @@ Callout format:
 
 ```md
 > [!goal] 🎯 Active goals
-> 🔥 [[goals/goals#🔥 G1: Compiler portfolio|G1: Compiler portfolio]] — done when: Public demo exists and was sent to 3 people by 2026-07-31
-> [[goals/goals#G2: Run 5 km|G2: Run 5 km]] — done when: Run 5 km under X by 2026-08-15
+> 🔥 [[goals/goals#🔥 G1: Compiler portfolio|G1: Compiler portfolio]] — done when: Public demo exists and was sent to 3 people by 31.7.2026
+> [[goals/goals#G2: Run 5 km|G2: Run 5 km]] — done when: Run 5 km under X by 15.8.2026
 > If output supports goal, write `[G1]` ... in "What moved the needle today?"
 ```
 

@@ -58,6 +58,7 @@ Progress:
 
 - 🚀 **Moved forward:** —
 - 🧨 **Time leak:** —
+- 🧱 **Hard thing:** —
 - ⚡ **Energy:** —
 
 ---

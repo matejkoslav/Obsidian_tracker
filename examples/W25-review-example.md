@@ -60,6 +60,7 @@ Overall: 69% ███████░░░
 | Habit | Result | Bar |
 |---|---:|---|
 | Checkbox habit | 71% | ███████░░░ |
+| Hard thing | 71% | ███████░░░ |
 | Measured habit | 82% | ████████░░ |
 | Limit habit | 54% | █████░░░░░ |
 
@@ -72,6 +73,7 @@ to adjust.
 
 - 🚀 **Moved forward:** Three concrete deliverables were finished.
 - 🧨 **Time leak:** Tool comparison repeatedly delayed the first output.
+- 🧱 **Hard thing:** Five days included one avoided action; strongest days logged what was actually done.
 - ⚡ **Energy:** Clear tasks helped momentum; late scrolling made starts harder.
 
 ---
