@@ -26,6 +26,14 @@ docs/superpowers/
 .env.local
 integrations/toggl.local.json
 
+# Android local build state
+android/**/.gradle/
+android/**/build
+android/**/build/
+android/**/local.properties
+android/**/*.jks
+android/**/*.keystore
+
 # OS, trash, and sync runtime files
 .DS_Store
 .trash/

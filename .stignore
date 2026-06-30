@@ -1,6 +1,9 @@
 .git/
 .obsidian/
 .trash/
+android/health-connect-bridge/.gradle/
+android/health-connect-bridge/app/build/
+android/health-connect-bridge/local.properties
 .DS_Store
 Thumbs.db
 desktop.ini
