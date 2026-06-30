@@ -22,6 +22,10 @@ attachments/
 .agents/
 docs/superpowers/
 
+# Toggl Track private config and local env
+.env.local
+integrations/toggl.local.json
+
 # OS, trash, and sync runtime files
 .DS_Store
 .trash/

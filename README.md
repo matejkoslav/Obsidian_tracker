@@ -80,6 +80,44 @@ daily template can contain checkbox habits, measured habits, and limit habits.
 Habit progress appears in the weekly review, but it does not change the output
 score.
 
+### Toggl Track Work Time
+
+Optional: import today's tracked Toggl Track time into the daily `Work 🟡:`
+line. This only fills that one line. It does not change weekly-review scoring
+or output evaluation.
+
+Set up private local files:
+
+```bash
+cp .env.example .env.local
+cp integrations/toggl.example.json integrations/toggl.local.json
+```
+
+Get your API token from `https://track.toggl.com/profile`: scroll down to
+**API Token**, copy it, and paste it into `.env.local`.
+
+Edit `integrations/toggl.local.json` so the left side matches your exact Toggl
+Track project names:
+
+```json
+{
+  "projects": {
+    "Client Work": "work",
+    "Course Study": "school",
+    "Side Project": "side quest"
+  }
+}
+```
+
+Then run:
+
+```bash
+node scripts/update-toggl-work.js
+```
+
+The private `.env.local` and `integrations/toggl.local.json` files are ignored
+by Git.
+
 ### Hard Thing
 
 Add one uncomfortable or avoided action per day:

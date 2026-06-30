@@ -1,10 +1,6 @@
-- [x] goals
-- [x] habits
-- [x] refine agents md (its too long)
-- [x] refine readme (its written by ai)
-- [x] refine gitignore (comments...)
-- [x] refine goals (just made this quick without brainstorming)
+- [x] work tracked time (Toggl track) feat
+- [x] work tracked time (Toggl track) docs, that its optional, but can be set up really quick
+- [ ] work tracked time (Toggl track) automatics cron job, mobile automatic too maybe
 - [ ] health connect: steps
 - [ ] health connect: activity (gym/bike...)
 - [ ] health connect: sleep (resting hr, hrv, regularity)
-- [ ] work tracked time (Toggl track)

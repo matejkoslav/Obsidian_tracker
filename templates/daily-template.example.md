@@ -10,6 +10,7 @@
 
 - [ ] Habit 1
 - [ ] Hard thing:
+- Work 🟡:
 - Measured habit:
 
 ---

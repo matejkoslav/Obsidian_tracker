@@ -29,6 +29,10 @@ Good examples:
 - `[x] Hard thing: started the task I avoided before opening YouTube`
 - `[x] Hard thing: asked for feedback on the rough draft`
 
+Optional Toggl Track import example:
+
+- `Work 🟡: 2h 15m (work 1h 30m, school 45m)`
+
 Bad examples:
 
 - `[x] Hard thing:`
